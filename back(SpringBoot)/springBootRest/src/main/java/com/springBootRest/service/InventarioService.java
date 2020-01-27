@@ -41,8 +41,8 @@ public class InventarioService {
 	
 	@CrossOrigin(origins ="*")
 	/* obtener persona por ID*/
-	@GetMapping ("/inventario/{id}")
-	public ResponseEntity<Inventario> getInventarioById(@PathVariable(value="id") Long empid){
+	@GetMapping ("/inventario/{cod_producto}")
+	public ResponseEntity<Inventario> getInventarioById(@PathVariable(value="cod_producto") Long empid){
 		
 		Inventario ciu= inventarioDao.finOne(empid);
 		if(ciu==null){

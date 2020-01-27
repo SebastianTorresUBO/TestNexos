@@ -22,7 +22,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class Producto {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	@OneToMany (mappedBy = "cod_producto")
 	private List<Inventario> cod_producto;
