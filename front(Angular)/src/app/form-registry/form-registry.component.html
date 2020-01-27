@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="col-md-12">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+        <h1>Registro</h1>
+        <form id="formRegistro" [formGroup]="Persona" (ngSubmit)="onSubmit(); Persona.reset();">
+        <div class="form-group" [ngClass]="{'has-error' : Persona.get('nombres').errors &&
+        (Persona.get('nombres').touched || Persona.get('nombres').dirty)} ">
+            <label for="name">Nombres</label>
+            <input type="text" class="form-control" id="name" required
+            formControlName="nombres" maxlength="70">
+            <span class="help-block" *ngIf="Persona.get('nombres').errors &&
+            (Persona.get('nombres').touched || Persona.get('nombres').dirty) ">
+                <span *ngIf="Persona.get('nombres').errors.required">
+                    El nombre es requerido
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error' : Persona.get('apellido').errors &&
+        (Persona.get('apellido').touched || Persona.get('apellido').dirty)} ">
+            <label for="alterEgo">Apellidos</label>
+            <input type="text" class="form-control" id="alterEgo"
+            formControlName="apellido" maxlength="70" >
+            <span class="help-block" *ngIf="Persona.get('apellido').errors &&
+            (Persona.get('apellido').touched || Persona.get('apellido').dirty) ">
+                <span *ngIf="Persona.get('apellido').errors.required">
+                    El apellido es requerido
+                </span>
+            </span>
+        </div>
+
+        <button id="submitButton" type="submit" class="btn btn-success" (click)="createPersons()">Registrar</button>
+        </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
