@@ -17,7 +17,7 @@ export class FormRegistryComponent implements OnInit {
   
   Persona: FormGroup;
   personaDto$: Producto[];
-  readonly ROOT_URL='http://192.168.0.24:8080/';
+  readonly ROOT_URL='http://localhost:8080/';
   ArrayProducts: Observable<Producto[]>;
   searchString: string;
 

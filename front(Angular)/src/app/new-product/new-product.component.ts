@@ -17,7 +17,7 @@ export class NewProductComponent implements OnInit {
   personaDto$: Producto[];
   inventarioDto$ : Inventario[];
   ArrayProducts: Observable<Producto[]>;
-  readonly ROOT_URL='http://192.168.0.24:8080/';
+  readonly ROOT_URL='http://localhost:8080/';
 
   constructor(private dataService: DataService, private fb: FormBuilder, private http: HttpClient) { }
 
