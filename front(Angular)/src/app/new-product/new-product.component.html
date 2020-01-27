@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="col-md-12">
+    <form id="formRegistro" [formGroup]="product" (ngSubmit)="onSubmit();  ">
+        <div class="form-group" [ngClass]="{'has-error' : product.get('codigo').errors &&
+        (product.get('codigo').touched || product.get('codigo').dirty)} ">
+            <label for="name">Codigo del producto</label>
+            <input type="number" class="form-control" id="name" required
+            formControlName="codigo" >
+            <span class="help-block" *ngIf="product.get('codigo').errors &&
+            (product.get('codigo').touched || product.get('codigo').dirty) ">
+                <span *ngIf="product.get('codigo').errors.required">
+                    El código es requerido
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error' : product.get('nombre').errors &&
+        (product.get('nombre').touched || product.get('nombre').dirty)} ">
+            <label for="alterEgo">Nombre del producto</label>
+            <input type="text" class="form-control" id="alterEgo"
+            formControlName="nombre" maxlength="70" >
+            <span class="help-block" *ngIf="product.get('nombre').errors &&
+            (product.get('nombre').touched || product.get('nombre').dirty) ">
+                <span *ngIf="product.get('nombre').errors.required">
+                    El nombre del producto es requerido
+                </span>
+            </span>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error' : product.get('precio').errors &&
+        (product.get('precio').touched || product.get('precio').dirty)} ">
+            <label for="alterEgo">Precio</label>
+            <input type="text" class="form-control" id="alterEgo"
+            formControlName="precio" maxlength="10" placeholder="$" >
+            <span class="help-block" *ngIf="product.get('precio').errors &&
+            (product.get('precio').touched || product.get('precio').dirty) ">
+                <span *ngIf="product.get('precio').errors.required">
+                    El precio es requerido
+                </span>
+            </span>
+        </div>
+        <div class="col-md-12">
+            <button id="submitButton" type="submit" class="btn btn-success" (click)="createProduct()">Registrar</button>
+            <button style="margin-left: 2%;background-color: blue; border-color: blue;" id="updateInventario" type="submit" class="btn btn-success" (click)="createInventario(); product.reset();" >Actualizar inventario</button>
+            <button id="backButton" style="display: none; margin-left: 2%;background-color: orange; border-color: orange;"  type="submit" class="btn btn-success backButton" routerLink="/inventario-registry"   >Volver</button>
+        </div>
+       
+        </form>
+    </div>
+</div>

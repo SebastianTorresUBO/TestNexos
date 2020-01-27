@@ -1,38 +1,63 @@
 <div class="container">
     <div class="col-md-12">
-        <div class="col-md-3"></div>
+        <div class="col-md-4"> </div>
         <div class="col-md-6">
-        <h1>Registro</h1>
-        <form id="formRegistro" [formGroup]="Persona" (ngSubmit)="onSubmit(); Persona.reset();">
-        <div class="form-group" [ngClass]="{'has-error' : Persona.get('nombres').errors &&
-        (Persona.get('nombres').touched || Persona.get('nombres').dirty)} ">
-            <label for="name">Nombres</label>
-            <input type="text" class="form-control" id="name" required
-            formControlName="nombres" maxlength="70">
-            <span class="help-block" *ngIf="Persona.get('nombres').errors &&
-            (Persona.get('nombres').touched || Persona.get('nombres').dirty) ">
-                <span *ngIf="Persona.get('nombres').errors.required">
-                    El nombre es requerido
-                </span>
-            </span>
+            <h1 style="    margin-left: 13%;">INVENTARIO</h1>
+     
+    
+        </div>
+        <div class="col-md-2"></div>
+        
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <div class="card-container">
+                    <nav>
+                      <a  routerLink="/new-product" routerLinkActive="active"><b>Insertar nuevos productos</b>
+                        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                      </a>
+                    </nav>
+                </div>  
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"></div>
         </div>
 
-        <div class="form-group" [ngClass]="{'has-error' : Persona.get('apellido').errors &&
-        (Persona.get('apellido').touched || Persona.get('apellido').dirty)} ">
-            <label for="alterEgo">Apellidos</label>
-            <input type="text" class="form-control" id="alterEgo"
-            formControlName="apellido" maxlength="70" >
-            <span class="help-block" *ngIf="Persona.get('apellido').errors &&
-            (Persona.get('apellido').touched || Persona.get('apellido').dirty) ">
-                <span *ngIf="Persona.get('apellido').errors.required">
-                    El apellido es requerido
-                </span>
-            </span>
+        <div class="col-md-12"> 
+            <div class="col-md-6"> </div>            
+            <div class="col-md-6"> 
+                <input type="text" placeholder="Busqueda por nombre de producto " class="form-control"
+                [(ngModel)]="searchString">
+            </div>  
+                      
+            <table class="table" >
+                <thead>
+                <tr>
+                    <th scope="col">Codigo del producto</th>
+                    <th scope="col">Nombre del producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let product of ArrayProducts | async | filter : 'nombre' : searchString;  ">
+                    
+                    <td *ngFor="let prueba of product.cod_producto"> {{prueba.cod_producto}}</td>
+                    <td> {{product.nombre}}</td>
+                    <td> {{product.precio}}</td>
+                    <td *ngFor="let prueba of product.cod_producto">{{prueba.stock}}</td>
+                    <td *ngFor="let prueba of product.cod_producto"> <button style="background-color: orange; opacity: 0.9;" class="btn" (click)="sellProduct(product,prueba)" >Vender</button> </td >
+                    <td *ngFor="let prueba of product.cod_producto"> <button style="background-color: greenyellow; opacity: 0.9;" class="btn" (click)="captureValue(product,prueba)" >Añadir al inventario</button> </td >
+                </tr>
+                
+                </tbody>
+            </table>
         </div>
-
-        <button id="submitButton" type="submit" class="btn btn-success" (click)="createPersons()">Registrar</button>
-        </form>
-        </div>
-        <div class="col-md-3"></div>
+      
+    
+</div>
     </div>
 </div>

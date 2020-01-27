@@ -9,6 +9,8 @@ import { HttpClientModule} from '@angular/common/http';
 import { QueryPeopleComponent } from './query-people/query-people.component';
 import { DataService } from '../services/data.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { NewProductComponent } from './new-product/new-product.component';
+
 
 
 
@@ -21,6 +23,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     AppComponent,
     FormRegistryComponent,
     QueryPeopleComponent,
+    NewProductComponent,
+    
     
     
   ],
